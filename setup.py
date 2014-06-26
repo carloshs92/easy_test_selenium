@@ -1,6 +1,6 @@
 from distutils.core import setup
 setup(
-  name = 'esasy_test_selenium',
+  name = 'easy_test_selenium',
   packages = ['easy_test_selenium'], # this must be the same as the name above
   version = '0.0.1',
   description = 'An app to create data to test',
