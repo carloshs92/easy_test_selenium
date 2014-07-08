@@ -4,6 +4,8 @@ import os
 import re
 import string
 
+DRIVER_INSTANCE = None
+TEST = None
 def render_templatefile(path, **kwargs):
     with open(path, 'rb') as file:
         raw = file.read()

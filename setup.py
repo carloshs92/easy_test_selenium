@@ -10,12 +10,15 @@ setup(
     version='0.0.1',
     include_package_data=True,
     description='A python mini framework for tests that use Selenium',
-    scripts=['bin/easytest'],
+    scripts=['bin/easy_test'],
     author='Carlos Huamani',
     author_email='carlos.hs.92@gmail.com',
     url='https://github.com/carloshs92/easy_test_selenium',
     download_url='https://github.com/carloshs92/easy_test_selenium/archive/master.zip',
     keywords=['test', 'functional test', 'selenium'],
     classifiers=[],
+    install_requires=[
+      'selenium>=2.42.1',
+    ],
 )
 

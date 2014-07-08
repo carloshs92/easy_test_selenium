@@ -2,7 +2,7 @@
 README.txt
 setup.cfg
 setup.py
-bin/easytest
+bin/easy_test
 easy_test_selenium/__init__.py
 easy_test_selenium/cmdline.py
 easy_test_selenium/configuration.py
@@ -15,6 +15,7 @@ easy_test_selenium/commands/newtest.py
 easy_test_selenium/commands/startproject.py
 easy_test_selenium/commands/test.py
 easy_test_selenium/templates/__init__.py
+easy_test_selenium/templates/project/__init__.py
 easy_test_selenium/templates/project/manage.py
 easy_test_selenium/templates/project/principal/__init__.py
 easy_test_selenium/templates/project/principal/settings.py

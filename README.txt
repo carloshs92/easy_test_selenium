@@ -2,45 +2,48 @@
 Easy Test Selenium
 ==================
 
-Easy Test Selenium
+**Easy Test Selenium** es un mini framework el cual da una propuesta de como debe ser ordenado las pruebas funcionales
+y asu vez presenta un marco de trabajo escalable y facil de editar.
 
-Es una herramienta 
-Towel Stuff provides such and such and so and so. You might find
-it most useful for tasks involving <x> and also <y>. Typical usage
-often looks like this::
-
-    #!/usr/bin/env python
-
-    from towelstuff import location
-    from towelstuff import utils
-
-    if utils.has_towel():
-        print "Your towel is located:", location.where_is_my_towel()
-
-(Note the double-colon and 4-space indent formatting above.)
-
-Paragraphs are separated by blank lines. *Italics*, **bold**,
-and ``monospace`` look like this.
+Para comenzar a usar **Easy Test Selenium** se debe ejecutar lo siguiente:
 
 
-A Section
-=========
+    pip install easy_test
+    easy_test startproject "nombre de proyecto"
 
-Lists look like this:
 
-* First
+Luego de haber ejecutado estas lineas. Dentro de la carpeta creada, podemos ver que tenemos una carpeta llamada
+**principal** y un archivo con el nombre de **manage.py**
 
-* Second. Can be multiple lines
-  but must be indented properly.
+El directorio **principal** contiene el archivo de configuración **settings.py**. Este archivo contiene la
+configuración de los webdrivers a utilizar, las apps a ser testeadas, entre otros.
 
-A Sub-Section
--------------
+Agregando pruebas
+-----------------
 
-Numbered lists look like you'd expect:
+Necesitamos entrar al proyecto creado y luego ejecutar lo siguiente:
 
-1. hi there
 
-2. must be going
+    python manage.py newtest 'prueba_1'
 
-Urls are http://like.this and links can be
-written `like this <http://www.example.com/foo/bar>`_.
+
+Luego entramos a nuestro archivo settings.py y donde dice WEB_DRIVERS agregamos el webdriver a utilizar indicando
+el navegador y el path si lo tuviera.
+
+
+Ejecutando nuestros tests
+-------------------------
+
+Para ejecutar todos nuestros tests ingresamos el siguiente comando:
+
+
+    python manage.py test all
+
+
+En caso que deseemos ejecutar solo un test pues indicamos el test en vez indicar all:
+
+
+    python manage.py 'prueba_1'
+
+
+La documentación estará próximamente en `FrontEnd Labs <http://frontend-labs.com/>`_.

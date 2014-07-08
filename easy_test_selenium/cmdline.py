@@ -9,8 +9,11 @@ def execute(argv=None, settings=None):
     if argv is None:
         argv = sys.argv
     app = argv[1]
-    name = len(argv) > 1 and argv[2] or None
+    name = len(argv) > 2 and argv[2] or None
 
+    if app=='test':
+        if name is None:
+            name = 'all'
     # Execute command
     cmd = get_command(app)
     cmd.run_command(name)

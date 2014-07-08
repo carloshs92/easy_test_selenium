@@ -1,3 +1,5 @@
+from importlib import import_module
+from easy_test_selenium import utils
 from easy_test_selenium.configuration import Settings
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,17 +10,30 @@ from selenium.common.exceptions import NoSuchElementException
 import unittest, time, re
 import sys
 
+
 class TestCasePrincipal(unittest.TestCase):
     def setUp(self):
+        print 'ejecuto el set up'
         self.setting = Settings()
         self.conf = self.setting.getConfiguration()
-        self.driver = webdriver.Firefox()
+        self.driver = self.get_driver(utils.DRIVER_INSTANCE)
         self.driver.implicitly_wait(self.conf.IMPLICITLY_WAIT)
         self.base_url = self.conf.URL_BASE
         self.verificationErrors = []
         self.accept_next_alert = True
         self.debug = self.conf.DEBUG
 
+    def test_main(self):
+        if utils.TEST == 'all':
+            for app in self.conf.TEST_APPS:
+                test_case = import_module('%s.test_case'%app)
+                test_case.main(self)
+        else:
+            if utils.TEST in self.conf.TEST_APPS:
+                test_case = import_module('%s.test_case'%utils.TEST)
+                test_case.main(self)
+            else:
+                raise Exception("There is no test case called %s in this project"%name)
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException, e: return False
@@ -66,8 +81,7 @@ class TestCasePrincipal(unittest.TestCase):
             my_driver = path is not None and webdriver.Safari(path) or webdriver.Safari()
         return my_driver
 
-    def runTest(self, driver):
-        self.driver = self.get_driver(driver)
+    def runTest(self):
         if __name__ == 'easy_test_selenium.test_case_principal':
             unittest.main(module='test_case_principal', argv=sys.argv[:1], exit=False)
 
